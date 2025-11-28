@@ -1,5 +1,8 @@
 package com.jspiders.dao;
 
+import com.jspiders.entity.MovieEntity;
+import com.jspiders.enums.MovieStatus;
+
 public class MovieDaoTests {
 
     public static void main(String[] args) {
@@ -10,12 +13,22 @@ public class MovieDaoTests {
     {
         System.out.println("Testing ADD Movie");
         try {
-            MovieDao movieDao = new MovieDao();
-            movieDao.addMovie();
+            MovieDaoImpl movieDao = new MovieDaoImpl();
+
+            MovieEntity movieEntity = new MovieEntity();
+            movieEntity.setTitle("Movie-1");
+            movieEntity.setCertification("U");
+            movieEntity.setLanguage("ENG");
+            movieEntity.setDuration(120);
+            movieEntity.setStatus(MovieStatus.AVAILABLE);
+
+            movieDao.addMovie(movieEntity);
+
             System.out.println("✅ADD MOVIE Test PASSED");
         }
         catch (Exception ex) {
             System.err.println("❌ADD MOVIE Test FAILED");
+            ex.printStackTrace();
         }
     }
 }

@@ -23,6 +23,8 @@
         <property name="show_sql">true</property> <!-- prints all sql stmts executed by hibernate -->
         <property name="format_sql">true</property><!-- format sql stmts executed by hibernate -->
 
+        <mapping class="com.jspiders.entity.MovieEntity"/>
+
     </session-factory>
 
 </hibernate-configuration>

@@ -36,7 +36,7 @@ Allow the admin to add movies and schedule shows in available auditoriums.
 
 🧱 Hibernate Entities:
 	•	Movie
-	•	Fields: id, title, language, duration, certification, status, createdAt
+	•	Fields: id, title, language, duration, certification, status, createdAt , createdBy
 	•	Mapping: @Entity, @OneToMany(mappedBy="movie")
 
 	•	Auditorium
