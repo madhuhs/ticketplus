@@ -3,9 +3,12 @@ package com.jspiders.entity;
 import com.jspiders.enums.MovieStatus;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "movie")
-public class MovieEntity {
+public class MovieEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +23,9 @@ public class MovieEntity {
     private String certification;
     @Enumerated(EnumType.STRING)
     private MovieStatus status;
+
+    @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
+    private List<ShowEntity> showList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -79,5 +85,13 @@ public class MovieEntity {
                 ", certification='" + certification + '\'' +
                 ", status=" + status +
                 '}';
+    }
+
+    public List<ShowEntity> getShowList() {
+        return showList;
+    }
+
+    public void setShowList(List<ShowEntity> showList) {
+        this.showList = showList;
     }
 }

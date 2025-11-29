@@ -1,8 +1,10 @@
 package com.jspiders.dao;
 
+import com.jspiders.entity.AuditoriumEntity;
+
 public interface AuditoriumDao {
-    void addAuditorium();
-    void getAuditorium(Long audiId);
+    void addAuditorium(AuditoriumEntity auditoriumEntity);
+    AuditoriumEntity getAuditorium(Long audiId);
     void updateAuditorium(Long audiId);
     void deleteAuditorium(Long audiId);
 }

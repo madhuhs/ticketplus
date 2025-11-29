@@ -1,21 +1,20 @@
 package com.jspiders.dao;
 
 import com.jspiders.config.DBConfig;
-import com.jspiders.entity.AuditoriumEntity;
+import com.jspiders.entity.ShowEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class AuditoriumDaoImpl implements AuditoriumDao{
+public class ShowDaoImpl implements ShowDao{
     @Override
-    public void addAuditorium(AuditoriumEntity auditoriumEntity) {
-
-        System.out.println("Adding Auditorium");
+    public void addShow(ShowEntity showEntity) {
+        System.out.println("Adding Show");
 
         Session session = DBConfig.getSession();
 
         Transaction transaction = session.beginTransaction();
 
-        session.persist(auditoriumEntity);
+        session.persist(showEntity);
 
         transaction.commit();
 
@@ -24,27 +23,29 @@ public class AuditoriumDaoImpl implements AuditoriumDao{
     }
 
     @Override
-    public AuditoriumEntity getAuditorium(Long audiId) {
+    public ShowEntity getShow(Long showId) {
+        System.out.println("Finding Show");
+
         Session session = DBConfig.getSession();
 
         Transaction transaction = session.beginTransaction();
 
-        AuditoriumEntity auditoriumEntity = session.find(AuditoriumEntity.class,audiId);
+        ShowEntity showEntity = session.find(ShowEntity.class,showId);
 
         transaction.commit();
 
         session.close();
 
-        return auditoriumEntity;
+        return showEntity;
     }
 
     @Override
-    public void updateAuditorium(Long audiId) {
+    public void updateShow(Long audiId) {
 
     }
 
     @Override
-    public void deleteAuditorium(Long audiId) {
+    public void deleteShow(Long audiId) {
 
     }
 }

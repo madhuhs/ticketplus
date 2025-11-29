@@ -13,6 +13,7 @@ public class MovieDaoTests {
     {
         System.out.println("Testing ADD Movie");
         try {
+
             MovieDaoImpl movieDao = new MovieDaoImpl();
 
             MovieEntity movieEntity = new MovieEntity();

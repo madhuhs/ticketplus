@@ -22,12 +22,21 @@ public class MovieDaoImpl implements MovieDao {
         session.close();
     }
 
-    public void getMovie(Long movieId)//read
+    public MovieEntity getMovie(Long movieId)//read
     {
         System.out.println("Finding Movie by id : "+movieId);
+
         Session session = DBConfig.getSession();
-        //logics
+
+        Transaction transaction = session.beginTransaction();
+
+        MovieEntity movieEntity = session.find(MovieEntity.class,movieId);
+
+        transaction.commit();
+
         session.close();
+
+        return movieEntity;
     }
 
     public void updateMovie(Long movieId)//update
