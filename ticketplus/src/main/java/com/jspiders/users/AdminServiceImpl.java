@@ -37,6 +37,8 @@ public class AdminServiceImpl implements AdminService{
 
             //default AVAILABLE on first time adding movie
             movieDto.setStatus(MovieStatus.AVAILABLE);
+
+            //will be set dynamically in Springs
             movieDto.setCreatedBy(301L);
 
             System.out.println();
@@ -45,7 +47,7 @@ public class AdminServiceImpl implements AdminService{
             System.out.println("=========Verify movie details==========");
             System.out.println();
 
-            //movieService.addMovie(movieDto);
+            movieService.addMovie(movieDto);
 
             System.out.println("✅Movie Created Successfully");
         }
