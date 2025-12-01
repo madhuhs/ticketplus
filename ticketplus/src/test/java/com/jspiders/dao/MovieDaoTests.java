@@ -1,6 +1,7 @@
 package com.jspiders.dao;
 
 import com.jspiders.entity.MovieEntity;
+import com.jspiders.enums.CertificateType;
 import com.jspiders.enums.MovieStatus;
 
 public class MovieDaoTests {
@@ -18,7 +19,7 @@ public class MovieDaoTests {
 
             MovieEntity movieEntity = new MovieEntity();
             movieEntity.setTitle("Movie-1");
-            movieEntity.setCertification("U");
+            movieEntity.setCertification(CertificateType.U);
             movieEntity.setLanguage("ENG");
             movieEntity.setDuration(120);
             movieEntity.setStatus(MovieStatus.AVAILABLE);

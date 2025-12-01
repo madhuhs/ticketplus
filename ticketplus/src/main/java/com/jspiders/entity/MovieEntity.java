@@ -1,8 +1,10 @@
 package com.jspiders.entity;
 
+import com.jspiders.enums.CertificateType;
 import com.jspiders.enums.MovieStatus;
 import jakarta.persistence.*;
 
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +22,8 @@ public class MovieEntity extends BaseEntity {
     private Integer duration;
 
     @Column(name = "certification",nullable = false)
-    private String certification;
+    @Enumerated(EnumType.STRING)
+    private CertificateType certification;
     @Enumerated(EnumType.STRING)
     private MovieStatus status;
 
@@ -59,20 +62,20 @@ public class MovieEntity extends BaseEntity {
         this.duration = duration;
     }
 
-    public String getCertification() {
-        return certification;
-    }
-
-    public void setCertification(String certification) {
-        this.certification = certification;
-    }
-
     public MovieStatus getStatus() {
         return status;
     }
 
     public void setStatus(MovieStatus status) {
         this.status = status;
+    }
+
+    public CertificateType getCertification() {
+        return certification;
+    }
+
+    public void setCertification(CertificateType certification) {
+        this.certification = certification;
     }
 
     @Override
