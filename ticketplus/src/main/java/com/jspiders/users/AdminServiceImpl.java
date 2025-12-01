@@ -56,4 +56,14 @@ public class AdminServiceImpl implements AdminService{
             ex.printStackTrace();
         }
     }
+
+    @Override
+    public void createShow() {
+        //show list of auditoriums
+        // select Audid Id (Scanner)
+        // Show list of movies
+        // select Movie Id;
+        // Create ShowsDto object
+        // call addShowO(audiID,movieId,showsDto);
+    }
 }
