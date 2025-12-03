@@ -2,8 +2,12 @@ package com.jspiders.dao;
 
 import com.jspiders.config.DBConfig;
 import com.jspiders.entity.MovieEntity;
+import com.jspiders.enums.MovieStatus;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class MovieDaoImpl implements MovieDao {
     @Override
@@ -20,6 +24,49 @@ public class MovieDaoImpl implements MovieDao {
         transaction.commit();
 
         session.close();
+    }
+
+    @Override
+    public List<MovieEntity> getMovieByStatus(MovieStatus status) {
+
+        Session session = DBConfig.getSession();
+
+        String selectMovieByStatusHql = "FROM MovieEntity mov WHERE mov.status = :status";
+
+        Query<MovieEntity> query = session.createQuery(selectMovieByStatusHql, MovieEntity.class);
+
+        query.setParameter("status",status);
+
+        Transaction transaction = session.beginTransaction();
+
+        List<MovieEntity> resultList = query.getResultList();
+
+        transaction.commit();
+
+        session.close();
+
+        return resultList;
+    }
+
+    @Override
+    public MovieEntity getMovieByTitle(String title) {
+        Session session = DBConfig.getSession();
+
+        String selectMovieByTitleHql = "FROM MovieEntity mov WHERE mov.title = :title";
+
+        Query<MovieEntity> query = session.createQuery(selectMovieByTitleHql, MovieEntity.class);
+
+        query.setParameter("title",title);
+
+        Transaction transaction = session.beginTransaction();
+
+        MovieEntity movieEntity = query.uniqueResult();
+
+        transaction.commit();
+
+        session.close();
+
+        return movieEntity;
     }
 
     public MovieEntity getMovie(Long movieId)//read
